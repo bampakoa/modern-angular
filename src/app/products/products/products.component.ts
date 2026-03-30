@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
@@ -10,10 +10,10 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  private productService = inject(ProductsService);
+
 
   products: Product[] = [];
-
-  constructor(private productService: ProductsService) {}
 
   ngOnInit(): void {
     this.getProducts();

@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { ProductViewService } from './product-view.service';
 
@@ -9,12 +9,12 @@ import { ProductViewService } from './product-view.service';
   providers: [ProductViewService]
 })
 export class ProductViewComponent implements OnDestroy, OnInit {
+  private productviewService = inject(ProductViewService);
+
 
   @Input() id = -1;
   name = '';
   private productSub = new Subject<void>();
-
-  constructor(private productviewService: ProductViewService) { }
 
   ngOnDestroy(): void {
     this.productSub.next();

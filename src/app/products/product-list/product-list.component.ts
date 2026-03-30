@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,14 +11,14 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
+  private productService = inject(ProductsService);
+
 
   selectedProduct: Product | undefined;
   products = new MatTableDataSource<Product>([]);
   columnNames = ['name', 'price'];
   @ViewChild(MatSort) sort: MatSort | null = null;
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
-
-  constructor(private productService: ProductsService) {}
 
   ngOnInit(): void {
     this.getProducts();

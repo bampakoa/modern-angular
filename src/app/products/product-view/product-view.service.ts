@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, of, switchMap } from 'rxjs';
 import { ProductsService } from '../products.service';
 import { Product } from '../product';
 
 @Injectable()
 export class ProductViewService {
+  private productService = inject(ProductsService);
+
 
   private product: Product | undefined;
-
-  constructor(private productService: ProductsService) { }
 
   getProduct(id: number): Observable<Product> {
     return this.productService.getProducts().pipe(

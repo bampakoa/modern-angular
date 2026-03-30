@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -7,13 +7,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./price.component.css']
 })
 export class PriceComponent {
+  data = inject(MAT_DIALOG_DATA);
+  private dialogRef = inject<MatDialogRef<PriceComponent>>(MatDialogRef);
+
 
   price: number | undefined;
-
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: number,
-    private dialogRef: MatDialogRef<PriceComponent>
-  ) {}
 
   save() {
     this.dialogRef.close(this.price);

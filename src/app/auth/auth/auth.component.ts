@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -6,8 +6,7 @@ import { AuthService } from '../auth.service';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
-export class AuthComponent {
+export class AuthComponent {  authService = inject(AuthService);
 
-  constructor(public authService: AuthService) { }
 
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
@@ -6,11 +6,11 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  private http = inject(HttpClient);
+
 
   private token = '';
   get isLoggedIn() { return this.token !== ''; }
-
-  constructor(private http: HttpClient) { }
 
   login(): Observable<string> {
     return this.http.post<string>('https://fakestoreapi.com/auth/login', {

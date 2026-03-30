@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 import { priceRangeValidator } from '../price-range.directive';
@@ -11,6 +11,8 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./product-create.component.css']
 })
 export class ProductCreateComponent implements OnInit {
+  private productsService = inject(ProductsService);
+
 
   @Output() added = new EventEmitter<Product>();
   productForm = new FormGroup({
@@ -29,8 +31,6 @@ export class ProductCreateComponent implements OnInit {
   categories = ['Hardware', 'Computers', 'Clothing', 'Software'];
   get name() { return this.productForm.controls.name }
   get price() { return this.productForm.controls.price }
-
-  constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
     this.price.valueChanges.subscribe(price => {

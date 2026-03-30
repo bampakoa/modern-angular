@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { filter, Observable, of, switchMap } from 'rxjs';
@@ -14,6 +14,12 @@ import { PriceComponent } from '../price/price.component';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit, OnChanges {
+  private productService = inject(ProductsService);
+  authService = inject(AuthService);
+  private route = inject(ActivatedRoute);
+  private cartService = inject(CartService);
+  private dialog = inject(MatDialog);
+
 
   @Input() product: Product | undefined;
   @Output() bought = new EventEmitter();
@@ -21,14 +27,6 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   @Input() id = -1;
   product$: Observable<Product> | undefined;
   price: number | undefined;
-
-  constructor(
-    private productService: ProductsService,
-    public authService: AuthService,
-    private route: ActivatedRoute,
-    private cartService: CartService,
-    private dialog: MatDialog
-  ) { }
 
   ngOnInit(): void {
     this.product$ = this.route.data.pipe(

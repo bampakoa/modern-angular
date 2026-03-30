@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Product } from '../products/product';
 import { CartService } from './cart.service';
@@ -9,13 +9,13 @@ import { CartService } from './cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  private cartService = inject(CartService);
+
 
   cartForm = new FormGroup({
     products: new FormArray<FormControl<number>>([])
   });
   cart: Product[] = [];
-
-  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.cart = this.cartService.cart;

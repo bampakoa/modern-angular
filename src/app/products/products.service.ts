@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Product } from './product';
@@ -13,10 +13,10 @@ interface ProductDTO {
   providedIn: 'root'
 })
 export class ProductsService {
+  private http = inject(HttpClient);
+
 
   private productsUrl = 'https://fakestoreapi.com/products';
-
-  constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
     return this.http.get<ProductDTO[]>(this.productsUrl).pipe(
