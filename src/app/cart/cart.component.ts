@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Product } from '../products/product';
 import { CartService } from './cart.service';
 
@@ -7,7 +7,7 @@ import { CartService } from './cart.service';
     selector: 'app-cart',
     templateUrl: './cart.component.html',
     styleUrls: ['./cart.component.css'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule]
 })
 export class CartComponent implements OnInit {
   private cartService = inject(CartService);

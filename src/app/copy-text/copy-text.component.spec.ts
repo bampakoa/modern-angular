@@ -8,8 +8,8 @@ describe('CopyTextComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CopyTextComponent ]
-    })
+    imports: [CopyTextComponent]
+})
     .compileComponents();
   }));
 

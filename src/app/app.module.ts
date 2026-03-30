@@ -25,15 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MapComponent } from './map/map.component';
 import { PlayerComponent } from './player/player.component';
 
-@NgModule({ declarations: [
-        AppComponent,
-        ButtonsComponent,
-        CartComponent,
-        PageNotFoundComponent,
-        CopyTextComponent,
-        MapComponent,
-        PlayerComponent
-    ],
+@NgModule({ declarations: [AppComponent],
     bootstrap: [AppComponent], imports: [BrowserModule,
         BrowserAnimationsModule,
         MatIconModule,
@@ -50,5 +42,10 @@ import { PlayerComponent } from './player/player.component';
         MatFormFieldModule,
         FormsModule,
         GoogleMapsModule,
-        YouTubePlayerModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        YouTubePlayerModule, ButtonsComponent,
+        CartComponent,
+        PageNotFoundComponent,
+        CopyTextComponent,
+        MapComponent,
+        PlayerComponent], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

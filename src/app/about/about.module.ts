@@ -6,12 +6,10 @@ import { AboutInfoComponent } from './about-info/about-info.component';
 
 
 @NgModule({
-  declarations: [
-    AboutInfoComponent
-  ],
-  imports: [
-    CommonModule,
-    AboutRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        AboutRoutingModule,
+        AboutInfoComponent
+    ]
 })
 export class AboutModule { }

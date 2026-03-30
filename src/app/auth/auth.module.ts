@@ -4,15 +4,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
-  declarations: [
-    AuthComponent
-  ],
-  imports: [
-    CommonModule,
-    MatButtonModule
-  ],
-  exports: [
-    AuthComponent
-  ]
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        AuthComponent
+    ],
+    exports: [
+        AuthComponent
+    ]
 })
 export class AuthModule { }

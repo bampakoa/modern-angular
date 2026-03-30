@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { GoogleMap, MapMarker } from '@angular/google-maps';
 
 @Component({
     selector: 'app-map',
     templateUrl: './map.component.html',
     styleUrls: ['./map.component.css'],
-    standalone: false
+    imports: [GoogleMap, MapMarker]
 })
 export class MapComponent {
   position: google.maps.LatLngLiteral =  {

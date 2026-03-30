@@ -7,12 +7,14 @@ import { Product } from '../product';
 import { AuthService } from '../../auth/auth.service';
 import { CartService } from '../../cart/cart.service';
 import { PriceComponent } from '../price/price.component';
+import { MatButton } from '@angular/material/button';
+import { AsyncPipe, CurrencyPipe } from '@angular/common';
 
 @Component({
     selector: 'app-product-detail',
     templateUrl: './product-detail.component.html',
     styleUrls: ['./product-detail.component.css'],
-    standalone: false
+    imports: [MatButton, AsyncPipe, CurrencyPipe]
 })
 export class ProductDetailComponent implements OnInit, OnChanges {
   private productService = inject(ProductsService);

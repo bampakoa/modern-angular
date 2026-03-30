@@ -1,14 +1,16 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
 import { Component, OnInit, inject } from '@angular/core';
 
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
+import { MatList, MatListItem, MatSelectionList, MatListOption } from '@angular/material/list';
+import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 
 @Component({
     selector: 'app-products',
     templateUrl: './products.component.html',
     styleUrls: ['./products.component.css'],
-    standalone: false
+    imports: [MatList, CdkDropList, MatListItem, CdkDrag, MatSelectionList, MatListOption, MatGridList, MatGridTile]
 })
 export class ProductsComponent implements OnInit {
   private productService = inject(ProductsService);

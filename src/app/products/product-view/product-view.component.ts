@@ -6,8 +6,7 @@ import { ProductViewService } from './product-view.service';
     selector: 'app-product-view',
     templateUrl: './product-view.component.html',
     styleUrls: ['./product-view.component.css'],
-    providers: [ProductViewService],
-    standalone: false
+    providers: [ProductViewService]
 })
 export class ProductViewComponent implements OnDestroy, OnInit {
   private productviewService = inject(ProductViewService);

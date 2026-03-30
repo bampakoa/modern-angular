@@ -26,35 +26,33 @@ import { ProductsComponent } from './products/products.component';
 import { PriceComponent } from './price/price.component';
 
 @NgModule({
-  declarations: [
-    ProductListComponent,
-    ProductDetailComponent,
-    SortPipe,
-    ProductViewComponent,
-    ProductCreateComponent,
-    ProductsComponent,
-    PriceComponent
-  ],
-  imports: [
-    CommonModule,
-    ProductsRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSelectModule,
-    MatListModule,
-    MatGridListModule,
-    MatDialogModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule,
-    DragDropModule
-  ],
-  exports: [ProductListComponent]
+    imports: [
+        CommonModule,
+        ProductsRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatAutocompleteModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatSelectModule,
+        MatListModule,
+        MatGridListModule,
+        MatDialogModule,
+        MatTableModule,
+        MatSortModule,
+        MatPaginatorModule,
+        DragDropModule,
+        ProductListComponent,
+        ProductDetailComponent,
+        SortPipe,
+        ProductViewComponent,
+        ProductCreateComponent,
+        ProductsComponent,
+        PriceComponent
+    ],
+    exports: [ProductListComponent]
 })
 export class ProductsModule { }

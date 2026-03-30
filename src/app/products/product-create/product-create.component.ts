@@ -1,15 +1,22 @@
 import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 import { priceRangeValidator } from '../price-range.directive';
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
+import { MatFormField, MatError, MatHint, MatSuffix, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatAutocompleteTrigger, MatAutocomplete, MatOption } from '@angular/material/autocomplete';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
+import { MatSelect } from '@angular/material/select';
+import { MatButton } from '@angular/material/button';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-product-create',
     templateUrl: './product-create.component.html',
     styleUrls: ['./product-create.component.css'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, MatFormField, MatInput, MatAutocompleteTrigger, MatError, MatAutocomplete, MatOption, MatHint, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, MatLabel, MatSelect, MatButton, AsyncPipe]
 })
 export class ProductCreateComponent implements OnInit {
   private productsService = inject(ProductsService);

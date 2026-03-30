@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { YouTubePlayer } from '@angular/youtube-player';
 
 @Component({
     selector: 'app-player',
     template: '<youtube-player videoId="YOUR_VIDEO_ID" />',
     styleUrls: ['./player.component.css'],
-    standalone: false
+    imports: [YouTubePlayer]
 })
 export class PlayerComponent implements OnInit {
 
