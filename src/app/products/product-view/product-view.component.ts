@@ -3,10 +3,11 @@ import { Subject, takeUntil } from 'rxjs';
 import { ProductViewService } from './product-view.service';
 
 @Component({
-  selector: 'app-product-view',
-  templateUrl: './product-view.component.html',
-  styleUrls: ['./product-view.component.css'],
-  providers: [ProductViewService]
+    selector: 'app-product-view',
+    templateUrl: './product-view.component.html',
+    styleUrls: ['./product-view.component.css'],
+    providers: [ProductViewService],
+    standalone: false
 })
 export class ProductViewComponent implements OnDestroy, OnInit {
   private productviewService = inject(ProductViewService);

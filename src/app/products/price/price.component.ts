@@ -2,9 +2,10 @@ import { Component, inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-price',
-  templateUrl: './price.component.html',
-  styleUrls: ['./price.component.css']
+    selector: 'app-price',
+    templateUrl: './price.component.html',
+    styleUrls: ['./price.component.css'],
+    standalone: false
 })
 export class PriceComponent {
   data = inject(MAT_DIALOG_DATA);

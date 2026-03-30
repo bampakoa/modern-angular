@@ -9,9 +9,10 @@ import { CartService } from '../../cart/cart.service';
 import { PriceComponent } from '../price/price.component';
 
 @Component({
-  selector: 'app-product-detail',
-  templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.css']
+    selector: 'app-product-detail',
+    templateUrl: './product-detail.component.html',
+    styleUrls: ['./product-detail.component.css'],
+    standalone: false
 })
 export class ProductDetailComponent implements OnInit, OnChanges {
   private productService = inject(ProductsService);

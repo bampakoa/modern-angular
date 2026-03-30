@@ -6,9 +6,10 @@ import { Product } from '../product';
 import { ProductsService } from '../products.service';
 
 @Component({
-  selector: 'app-product-create',
-  templateUrl: './product-create.component.html',
-  styleUrls: ['./product-create.component.css']
+    selector: 'app-product-create',
+    templateUrl: './product-create.component.html',
+    styleUrls: ['./product-create.component.css'],
+    standalone: false
 })
 export class ProductCreateComponent implements OnInit {
   private productsService = inject(ProductsService);
