@@ -12,5 +12,5 @@
   <tr mat-header-row *matHeaderRowDef="columnNames"></tr>
   <tr mat-row *matRowDef="let row; columns: columnNames;"></tr>
 </table>
-<mat-paginator [pageSize]="5" [pageSizeOptions]="[5,10,15]"></mat-paginator>
-<app-product-create (added)="onAdd($event)"></app-product-create>
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5,10,15]" />
+<app-product-create (added)="onAdd($event)" />

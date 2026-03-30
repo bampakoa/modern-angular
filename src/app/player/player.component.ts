@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-player',
-    template: '<youtube-player videoId="YOUR_VIDEO_ID"></youtube-player>',
+    template: '<youtube-player videoId="YOUR_VIDEO_ID" />',
     styleUrls: ['./player.component.css'],
     standalone: false
 })
