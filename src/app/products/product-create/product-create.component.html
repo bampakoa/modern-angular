@@ -5,9 +5,11 @@
       <mat-error>The name is not valid</mat-error>
     </mat-form-field>
     <mat-autocomplete #productsAuto="matAutocomplete">
-      <mat-option *ngFor="let product of products$ | async" [value]="product.name">
-        {{product.name}}
-      </mat-option>
+      @for (product of products$ | async; track product) {
+        <mat-option [value]="product.name">
+          {{product.name}}
+        </mat-option>
+      }
     </mat-autocomplete>
   </div>
   <div>
@@ -30,9 +32,11 @@
     <mat-form-field>
       <mat-label>Categories</mat-label>
       <mat-select multiple>
-        <mat-option *ngFor="let category of categories" [value]="category">
-          {{category}}
-        </mat-option>
+        @for (category of categories; track category) {
+          <mat-option [value]="category">
+            {{category}}
+          </mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
