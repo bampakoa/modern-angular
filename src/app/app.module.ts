@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,37 +25,30 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MapComponent } from './map/map.component';
 import { PlayerComponent } from './player/player.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    ButtonsComponent,
-    CartComponent,
-    PageNotFoundComponent,
-    CopyTextComponent,
-    MapComponent,
-    PlayerComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCheckboxModule,
-    ProductsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    AuthModule,
-    ReactiveFormsModule,
-    CommonModule,
-    MatToolbarModule,
-    ClipboardModule,
-    MatFormFieldModule,
-    FormsModule,
-    GoogleMapsModule,
-    YouTubePlayerModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        ButtonsComponent,
+        CartComponent,
+        PageNotFoundComponent,
+        CopyTextComponent,
+        MapComponent,
+        PlayerComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatCheckboxModule,
+        ProductsModule,
+        AppRoutingModule,
+        AuthModule,
+        ReactiveFormsModule,
+        CommonModule,
+        MatToolbarModule,
+        ClipboardModule,
+        MatFormFieldModule,
+        FormsModule,
+        GoogleMapsModule,
+        YouTubePlayerModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
