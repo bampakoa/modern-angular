@@ -21,14 +21,14 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { SortPipe } from './sort.pipe';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
-import { ProductsRoutingModule } from './products-routing.module';
+import { routes } from './products.routes';
 import { ProductsComponent } from './products/products.component';
 import { PriceComponent } from './price/price.component';
+import { provideRouter } from '@angular/router';
 
 @NgModule({
     imports: [
         CommonModule,
-        ProductsRoutingModule,
         FormsModule,
         ReactiveFormsModule,
         MatButtonModule,
@@ -53,6 +53,7 @@ import { PriceComponent } from './price/price.component';
         ProductsComponent,
         PriceComponent
     ],
-    exports: [ProductListComponent]
+    exports: [ProductListComponent],
+    providers: [provideRouter(routes)]
 })
 export class ProductsModule { }

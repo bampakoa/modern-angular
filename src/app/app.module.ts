@@ -13,7 +13,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 
-import { AppRoutingModule } from './app-routing.module';
+import { routes } from './app.routes.';
 import { AppComponent } from './app.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { CartComponent } from './cart/cart.component';
@@ -24,6 +24,7 @@ import { CopyTextComponent } from './copy-text/copy-text.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MapComponent } from './map/map.component';
 import { PlayerComponent } from './player/player.component';
+import { provideRouter, RouterLink, RouterOutlet } from '@angular/router';
 
 @NgModule({ declarations: [AppComponent],
     bootstrap: [AppComponent], imports: [BrowserModule,
@@ -33,7 +34,7 @@ import { PlayerComponent } from './player/player.component';
         MatButtonToggleModule,
         MatCheckboxModule,
         ProductsModule,
-        AppRoutingModule,
+        RouterOutlet,
         AuthModule,
         ReactiveFormsModule,
         CommonModule,
@@ -47,5 +48,5 @@ import { PlayerComponent } from './player/player.component';
         PageNotFoundComponent,
         CopyTextComponent,
         MapComponent,
-        PlayerComponent], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        PlayerComponent, RouterLink], providers: [provideHttpClient(withInterceptorsFromDi()), provideRouter(routes)] })
 export class AppModule { }
