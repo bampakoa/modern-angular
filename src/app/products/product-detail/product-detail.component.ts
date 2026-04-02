@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, inject } from '@angular/core';
+import { Component, OnInit, OnChanges, inject, input, output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { filter, Observable, of, switchMap } from 'rxjs';
@@ -24,10 +24,10 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   private dialog = inject(MatDialog);
 
 
-  @Input() product: Product | undefined;
-  @Output() bought = new EventEmitter();
-  @Output() deleted = new EventEmitter();
-  @Input() id = -1;
+  readonly product = input<Product>();
+  readonly bought = output();
+  readonly deleted = output();
+  readonly id = input(-1);
   product$: Observable<Product> | undefined;
   price: number | undefined;
 
@@ -38,7 +38,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-   this.product$ = this.productService.getProduct(this.id);
+   this.product$ = this.productService.getProduct(this.id());
   }
 
   buy(product: Product) {

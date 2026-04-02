@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
+import { Component, OnInit, inject, output } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 import { priceRangeValidator } from '../price-range.directive';
@@ -22,7 +22,7 @@ export class ProductCreateComponent implements OnInit {
   private productsService = inject(ProductsService);
 
 
-  @Output() added = new EventEmitter<Product>();
+  readonly added = output<Product>();
   productForm = new FormGroup({
     name: new FormControl('', {
       nonNullable: true,
