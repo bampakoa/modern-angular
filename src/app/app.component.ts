@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
+import { MatToolbar } from '@angular/material/toolbar';
+import { MatAnchor } from '@angular/material/button';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { AuthComponent } from './auth/auth/auth.component';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    standalone: false
+    imports: [MatToolbar, MatAnchor, RouterLink, AuthComponent, RouterOutlet]
 })
 export class AppComponent {
   title = 'my-app';
