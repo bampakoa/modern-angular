@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -17,36 +16,35 @@ import { routes } from './app.routes.';
 import { AppComponent } from './app.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { CartComponent } from './cart/cart.component';
-import { ProductsModule } from './products/products.module';
+import { productRoutes } from './products/products.routes';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AuthModule } from './auth/auth.module';
+import { AuthComponent } from './auth/auth/auth.component';
 import { CopyTextComponent } from './copy-text/copy-text.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MapComponent } from './map/map.component';
 import { PlayerComponent } from './player/player.component';
 import { provideRouter, RouterLink, RouterOutlet } from '@angular/router';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @NgModule({ declarations: [AppComponent],
     bootstrap: [AppComponent], imports: [BrowserModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-        MatButtonModule,
-        MatButtonToggleModule,
-        MatCheckboxModule,
-        ProductsModule,
-        RouterOutlet,
-        AuthModule,
-        ReactiveFormsModule,
-        CommonModule,
-        MatToolbarModule,
-        ClipboardModule,
-        MatFormFieldModule,
-        FormsModule,
-        GoogleMapsModule,
-        YouTubePlayerModule, ButtonsComponent,
-        CartComponent,
-        PageNotFoundComponent,
-        CopyTextComponent,
-        MapComponent,
-        PlayerComponent, RouterLink], providers: [provideHttpClient(withInterceptorsFromDi()), provideRouter(routes)] })
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCheckboxModule,
+    RouterOutlet,
+    AuthComponent,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    ClipboardModule,
+    MatFormFieldModule,
+    FormsModule,
+    GoogleMapsModule,
+    YouTubePlayerModule, ButtonsComponent,
+    CartComponent,
+    PageNotFoundComponent,
+    CopyTextComponent,
+    MapComponent,
+    PlayerComponent, RouterLink], providers: [provideHttpClient(withInterceptorsFromDi()), provideRouter([...productRoutes, ...routes]), provideNativeDateAdapter()] })
 export class AppModule { }
