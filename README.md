@@ -9,4 +9,4 @@ Explore some of the latest modern APIs in the Angular framework and how to use s
  - Signal methods (inputs, outputs, viewChild)
  - Full standalone
  - Basics of signals (write values, update values, derive values, linking signals)
- - Zoneless and how to prepare for migrating
+ - Zoneless
