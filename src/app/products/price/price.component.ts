@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, model } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { MatFormField } from '@angular/material/form-field';
@@ -17,10 +17,10 @@ export class PriceComponent {
   private dialogRef = inject<MatDialogRef<PriceComponent>>(MatDialogRef);
 
 
-  price: number | undefined;
+  readonly price = model<number | undefined>();
 
   save() {
-    this.dialogRef.close(this.price);
+    this.dialogRef.close(this.price());
   }
 
 }

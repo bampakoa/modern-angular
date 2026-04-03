@@ -1,25 +1,26 @@
-import { Component, OnInit, OnChanges, inject, input, output } from '@angular/core';
+import { Component, OnChanges, inject, input, output, model, linkedSignal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { filter, Observable, of, switchMap } from 'rxjs';
+import { filter, switchMap } from 'rxjs';
 import { ProductsService } from '../products.service';
 import { Product } from '../product';
 import { AuthService } from '../../auth/auth.service';
 import { CartService } from '../../cart/cart.service';
 import { PriceComponent } from '../price/price.component';
 import { MatButton } from '@angular/material/button';
-import { AsyncPipe, CurrencyPipe } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'app-product-detail',
     templateUrl: './product-detail.component.html',
     styleUrls: ['./product-detail.component.css'],
-    imports: [MatButton, AsyncPipe, CurrencyPipe]
+    imports: [MatButton, CurrencyPipe]
 })
-export class ProductDetailComponent implements OnInit, OnChanges {
+export class ProductDetailComponent implements OnChanges {
   private productService = inject(ProductsService);
   authService = inject(AuthService);
-  private route = inject(ActivatedRoute);
+  private data = toSignal(inject(ActivatedRoute).data);
   private cartService = inject(CartService);
   private dialog = inject(MatDialog);
 
@@ -28,17 +29,11 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   readonly bought = output();
   readonly deleted = output();
   readonly id = input(-1);
-  product$: Observable<Product> | undefined;
-  price: number | undefined;
-
-  ngOnInit(): void {
-    this.product$ = this.route.data.pipe(
-      switchMap(data => of(data['product']))
-    );
-  }
+  readonly selectedProduct = linkedSignal<Product>(() => this.data()!['product']);
+  readonly price = model<number | undefined>();
 
   ngOnChanges(): void {
-   this.product$ = this.productService.getProduct(this.id());
+    this.productService.getProduct(this.id()).subscribe(product => this.selectedProduct.set(product));
   }
 
   buy(product: Product) {

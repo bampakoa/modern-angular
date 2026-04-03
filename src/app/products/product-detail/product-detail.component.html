@@ -1,14 +1,12 @@
-@if (product$ | async; as product) {
-  <div>
-    <h2>Product Details</h2>
-    <h3>{{product.name}}</h3>
-    <span>{{product.price | currency:'EUR'}}</span>
-    <button mat-raised-button color="primary" (click)="changePrice(product)">Change</button>
-    <p>
-      @if (authService.isLoggedIn) {
-        <button mat-button (click)="buy(product)">Buy Now</button>
-      }
-      <button mat-raised-button color="primary" class="delete" (click)="remove(product)">Delete</button>
-    </p>
-  </div>
-}
+<div>
+  <h2>Product Details</h2>
+  <h3>{{selectedProduct().name}}</h3>
+  <span>{{selectedProduct().price | currency:'EUR'}}</span>
+  <button mat-raised-button color="primary" (click)="changePrice(selectedProduct())">Change</button>
+  <p>
+    @if (authService.isLoggedIn()) {
+      <button mat-button (click)="buy(selectedProduct())">Buy Now</button>
+    }
+    <button mat-raised-button color="primary" class="delete" (click)="remove(selectedProduct())">Delete</button>
+  </p>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { FormArray, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Product } from '../products/product';
 import { CartService } from './cart.service';
@@ -16,11 +16,11 @@ export class CartComponent implements OnInit {
   cartForm = new FormGroup({
     products: new FormArray<FormControl<number>>([])
   });
-  cart: Product[] = [];
+  readonly cart = signal<Product[]>([]);
 
   ngOnInit(): void {
-    this.cart = this.cartService.cart;
-    this.cart.forEach(() => {
+    this.cart.set(this.cartService.cart);
+    this.cart().forEach(() => {
       this.cartForm.controls.products.push(
         new FormControl(1, { nonNullable: true })
       );

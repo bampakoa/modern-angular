@@ -5,7 +5,7 @@
       <mat-error>The name is not valid</mat-error>
     </mat-form-field>
     <mat-autocomplete #productsAuto="matAutocomplete">
-      @for (product of products$ | async; track product) {
+      @for (product of filteredProducts(); track product) {
         <mat-option [value]="product.name">
           {{product.name}}
         </mat-option>
@@ -32,7 +32,7 @@
     <mat-form-field>
       <mat-label>Categories</mat-label>
       <mat-select multiple>
-        @for (category of categories; track category) {
+        @for (category of categories(); track category) {
           <mat-option [value]="category">
             {{category}}
           </mat-option>

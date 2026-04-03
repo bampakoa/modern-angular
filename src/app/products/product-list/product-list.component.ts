@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, viewChild } from '@angular/core';
+import { Component, OnInit, inject, signal, viewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
@@ -18,7 +18,7 @@ export class ProductListComponent implements OnInit {
   private productService = inject(ProductsService);
 
 
-  selectedProduct: Product | undefined;
+  selectedProduct = signal<Product | undefined>(undefined);
   products = new MatTableDataSource<Product>([]);
   columnNames = ['name', 'price'];
   readonly sort = viewChild(MatSort);
@@ -37,8 +37,8 @@ export class ProductListComponent implements OnInit {
   }
 
   onDelete() {
-    this.products.data = this.products.data.filter(product => product !== this.selectedProduct);
-    this.selectedProduct = undefined;
+    this.products.data = this.products.data.filter(product => product !== this.selectedProduct());
+    this.selectedProduct.set(undefined);
   }
 
   private getProducts() {

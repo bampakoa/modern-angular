@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { GoogleMap, MapMarker } from '@angular/google-maps';
 
 @Component({
@@ -8,12 +8,12 @@ import { GoogleMap, MapMarker } from '@angular/google-maps';
     imports: [GoogleMap, MapMarker]
 })
 export class MapComponent {
-  position: google.maps.LatLngLiteral =  {
+  readonly position = signal<google.maps.LatLngLiteral>({
     lat: 38.480052,
     lng: 22.494062
-  };
-  options: google.maps.MapOptions = {
+  });
+  readonly options = signal<google.maps.MapOptions>({
     center: { lat: 39.0742, lng: 21.8243 },
     zoom: 6
-  };
+  });
 }

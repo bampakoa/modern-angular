@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
@@ -9,17 +9,17 @@ export class AuthService {
   private http = inject(HttpClient);
 
 
-  private token = '';
-  get isLoggedIn() { return this.token !== ''; }
+  private readonly token = signal('');
+  readonly isLoggedIn = computed(() => this.token() !== '');
 
   login(): Observable<string> {
     return this.http.post<string>('https://fakestoreapi.com/auth/login', {
       username: 'david_r',
       password: '3478*#54'
-    }).pipe(tap(token => this.token = token));
+    }).pipe(tap(token => this.token.set(token)));
   }
 
   logout() {
-    this.token = '';
+    this.token.set('');
   }
 }
