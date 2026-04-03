@@ -1,4 +1,4 @@
-import { Component, OnChanges, inject, input, output, model, linkedSignal } from '@angular/core';
+import { Component, OnChanges, inject, input, output, model, linkedSignal, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { filter, switchMap } from 'rxjs';
@@ -15,7 +15,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
     selector: 'app-product-detail',
     templateUrl: './product-detail.component.html',
     styleUrls: ['./product-detail.component.css'],
-    imports: [MatButton, CurrencyPipe]
+    imports: [MatButton, CurrencyPipe],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailComponent implements OnChanges {
   private productService = inject(ProductsService);

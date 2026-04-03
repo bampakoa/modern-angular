@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
 import { FormArray, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Product } from '../products/product';
 import { CartService } from './cart.service';
@@ -7,7 +7,8 @@ import { CartService } from './cart.service';
     selector: 'app-cart',
     templateUrl: './cart.component.html',
     styleUrls: ['./cart.component.css'],
-    imports: [FormsModule, ReactiveFormsModule]
+    imports: [FormsModule, ReactiveFormsModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartComponent implements OnInit {
   private cartService = inject(CartService);

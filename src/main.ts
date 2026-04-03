@@ -19,14 +19,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { AppComponent } from './app/app.component';
-import { importProvidersFrom } from '@angular/core';
+import { importProvidersFrom, provideZonelessChangeDetection } from '@angular/core';
 
 
 bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(BrowserModule, MatIconModule, MatButtonModule, MatButtonToggleModule, MatCheckboxModule, RouterOutlet, ReactiveFormsModule, MatToolbarModule, ClipboardModule, MatFormFieldModule, FormsModule, GoogleMapsModule, YouTubePlayerModule, RouterLink),
         provideHttpClient(withInterceptorsFromDi()), provideRouter([...productRoutes, ...routes]), provideNativeDateAdapter(),
-        provideAnimations()
+        provideAnimations(),
+        provideZonelessChangeDetection()
     ]
 })
   .catch(err => console.error(err));

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, inject, input, signal } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { ProductViewService } from './product-view.service';
 
@@ -6,7 +6,8 @@ import { ProductViewService } from './product-view.service';
     selector: 'app-product-view',
     templateUrl: './product-view.component.html',
     styleUrls: ['./product-view.component.css'],
-    providers: [ProductViewService]
+    providers: [ProductViewService],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductViewComponent implements OnDestroy, OnInit {
   private productviewService = inject(ProductViewService);

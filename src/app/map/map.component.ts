@@ -1,11 +1,12 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { GoogleMap, MapMarker } from '@angular/google-maps';
 
 @Component({
     selector: 'app-map',
     templateUrl: './map.component.html',
     styleUrls: ['./map.component.css'],
-    imports: [GoogleMap, MapMarker]
+    imports: [GoogleMap, MapMarker],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MapComponent {
   readonly position = signal<google.maps.LatLngLiteral>({

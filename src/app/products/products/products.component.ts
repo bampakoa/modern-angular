@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray, CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
@@ -10,7 +10,8 @@ import { MatGridList, MatGridTile } from '@angular/material/grid-list';
     selector: 'app-products',
     templateUrl: './products.component.html',
     styleUrls: ['./products.component.css'],
-    imports: [MatList, CdkDropList, MatListItem, CdkDrag, MatSelectionList, MatListOption, MatGridList, MatGridTile]
+    imports: [MatList, CdkDropList, MatListItem, CdkDrag, MatSelectionList, MatListOption, MatGridList, MatGridTile],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsComponent implements OnInit {
   private productService = inject(ProductsService);

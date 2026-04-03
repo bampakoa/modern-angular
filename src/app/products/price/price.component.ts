@@ -1,4 +1,4 @@
-import { Component, inject, model } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, model } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { MatFormField } from '@angular/material/form-field';
@@ -10,7 +10,8 @@ import { MatButton } from '@angular/material/button';
     selector: 'app-price',
     templateUrl: './price.component.html',
     styleUrls: ['./price.component.css'],
-    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatFormField, MatInput, FormsModule, MatDialogActions, MatButton, MatDialogClose]
+    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatFormField, MatInput, FormsModule, MatDialogActions, MatButton, MatDialogClose],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PriceComponent {
   data = inject(MAT_DIALOG_DATA);

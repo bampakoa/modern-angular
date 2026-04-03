@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { MatButton } from '@angular/material/button';
 
@@ -6,9 +6,11 @@ import { MatButton } from '@angular/material/button';
     selector: 'app-auth',
     templateUrl: './auth.component.html',
     styleUrls: ['./auth.component.css'],
-    imports: [MatButton]
+    imports: [MatButton],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AuthComponent {  authService = inject(AuthService);
+export class AuthComponent {
+  authService = inject(AuthService);
 
 
 }

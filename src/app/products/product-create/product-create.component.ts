@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject, output, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 import { priceRangeValidator } from '../price-range.directive';
@@ -16,7 +16,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
     selector: 'app-product-create',
     templateUrl: './product-create.component.html',
     styleUrls: ['./product-create.component.css'],
-    imports: [FormsModule, ReactiveFormsModule, MatFormField, MatInput, MatAutocompleteTrigger, MatError, MatAutocomplete, MatOption, MatHint, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, MatLabel, MatSelect, MatButton]
+    imports: [FormsModule, ReactiveFormsModule, MatFormField, MatInput, MatAutocompleteTrigger, MatError, MatAutocomplete, MatOption, MatHint, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, MatLabel, MatSelect, MatButton],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductCreateComponent implements OnInit {
   private productsService = inject(ProductsService);

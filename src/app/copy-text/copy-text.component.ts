@@ -1,4 +1,4 @@
-import { Component, model } from '@angular/core';
+import { ChangeDetectionStrategy, Component, model } from '@angular/core';
 import { MatFormField } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
@@ -9,7 +9,8 @@ import { MatIcon } from '@angular/material/icon';
     selector: 'app-copy-text',
     templateUrl: './copy-text.component.html',
     styleUrls: ['./copy-text.component.css'],
-    imports: [MatFormField, FormsModule, MatButton, CdkCopyToClipboard, MatIcon]
+    imports: [MatFormField, FormsModule, MatButton, CdkCopyToClipboard, MatIcon],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CopyTextComponent {
   readonly content = model('');

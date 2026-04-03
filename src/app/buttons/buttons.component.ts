@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatButton, MatIconButton, MatFabButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonToggleGroup, MatButtonToggle } from '@angular/material/button-toggle';
@@ -7,7 +7,8 @@ import { MatButtonToggleGroup, MatButtonToggle } from '@angular/material/button-
     selector: 'app-buttons',
     templateUrl: './buttons.component.html',
     styleUrls: ['./buttons.component.css'],
-    imports: [MatButton, MatIconButton, MatIcon, MatFabButton, MatButtonToggleGroup, MatButtonToggle]
+    imports: [MatButton, MatIconButton, MatIcon, MatFabButton, MatButtonToggleGroup, MatButtonToggle],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonsComponent {
 
